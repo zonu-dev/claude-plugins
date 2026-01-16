@@ -15,7 +15,7 @@ My personal Claude Code plugins.
 GitHub Issuesベースの開発ワークフローを支援するプラグイン。
 
 ```bash
-/plugin install gh-issue-workflow@claude-plugins
+/plugin install gh-issue-workflow@zonu-plugins
 ```
 
 #### Commands

@@ -20,7 +20,7 @@ Install this marketplace:
 
 Install a plugin from this marketplace:
 ```bash
-/plugin install <plugin-name>@claude-plugins
+/plugin install <plugin-name>@zonu-plugins
 ```
 
 ## Adding New Plugins
