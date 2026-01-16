@@ -1,0 +1,20 @@
+{
+  "name": "claude-plugins",
+  "owner": {
+    "name": "zonu-dev"
+  },
+  "metadata": {
+    "description": "My Claude Code plugins",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "gh-issue-workflow",
+      "description": "GitHub Issues workflow automation - from issue to PR",
+      "version": "1.0.0",
+      "source": "./plugins/gh-issue-workflow",
+      "category": "productivity"
+    }
+  ]
+}
