@@ -1,0 +1,9 @@
+{
+  "name": "gh-issue-workflow",
+  "version": "1.0.0",
+  "description": "GitHub Issues workflow automation - from issue to PR",
+  "author": {
+    "name": "zonu-dev"
+  },
+  "keywords": ["github", "issues", "workflow", "git", "pull-request", "git-flow"]
+}
