@@ -10,10 +10,10 @@
   },
   "plugins": [
     {
-      "name": "gh-issue-workflow",
+      "name": "iflow",
       "description": "GitHub Issues workflow automation - from issue to PR",
       "version": "1.0.0",
-      "source": "./plugins/gh-issue-workflow",
+      "source": "./plugins/iflow",
       "category": "productivity"
     }
   ]

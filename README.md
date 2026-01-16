@@ -10,12 +10,12 @@ My personal Claude Code plugins.
 
 ## Available Plugins
 
-### gh-issue-workflow
+### iflow
 
 GitHub Issuesベースの開発ワークフローを支援するプラグイン。
 
 ```bash
-/plugin install gh-issue-workflow@zonu-plugins
+/plugin install iflow@zonu-plugins
 ```
 
 #### Commands
