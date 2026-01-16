@@ -1,5 +1,5 @@
 {
-  "name": "gh-issue-workflow",
+  "name": "iflow",
   "version": "1.0.0",
   "description": "GitHub Issues workflow automation - from issue to PR",
   "author": {

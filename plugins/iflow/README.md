@@ -1,4 +1,4 @@
-# gh-issue-workflow
+# iflow
 
 GitHub Issuesベースの開発ワークフローを支援するClaude Code Skillsプラグイン。
 
@@ -17,7 +17,7 @@ GitHub Issuesベースの開発ワークフローを支援するClaude Code Skil
 
 ```bash
 /plugin marketplace add zonu-dev/claude-plugins
-/plugin install gh-issue-workflow@zonu-plugins
+/plugin install iflow@zonu-plugins
 ```
 
 ## 使用例
