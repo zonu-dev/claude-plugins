@@ -1,0 +1,15 @@
+{
+  "name": "zdev",
+  "version": "1.0.0",
+  "description": "Personal dev toolkit for Claude Code",
+  "author": {
+    "name": "zonu-dev"
+  },
+  "keywords": [
+    "dev-toolkit",
+    "workflow",
+    "github",
+    "issues",
+    "git"
+  ]
+}

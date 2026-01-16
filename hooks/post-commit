@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COMMIT_MSG="$(git log -1 --pretty=%B)"
+
+# Prevent infinite loop: skip if this is a bump commit
+if [[ "$COMMIT_MSG" =~ ^chore:.*bump\ version ]]; then
+  exit 0
+fi
+
+# Parse conventional commit type
+TYPE="$(echo "$COMMIT_MSG" | head -1 | sed -n 's/^\([a-z]*\)[(:].*$/\1/p')"
+
+case "$TYPE" in
+  feat)
+    BUMP="minor"
+    ;;
+  fix|docs|style|refactor|test|chore)
+    BUMP="patch"
+    ;;
+  *)
+    exit 0
+    ;;
+esac
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+NEW_VERSION="$("$REPO_ROOT/scripts/bump-version.sh" "$BUMP")"
+
+git add \
+  "$REPO_ROOT/.claude-plugin/marketplace.json" \
+  "$REPO_ROOT/plugins/zdev/.claude-plugin/plugin.json"
+
+git commit -m "chore: 🔧 bump version to $NEW_VERSION"

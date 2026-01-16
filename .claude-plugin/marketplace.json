@@ -1,0 +1,20 @@
+{
+  "name": "zonu-plugins",
+  "owner": {
+    "name": "zonu-dev"
+  },
+  "metadata": {
+    "description": "My Claude Code plugins",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "zdev",
+      "description": "Personal dev toolkit for Claude Code",
+      "version": "1.0.0",
+      "source": "./plugins/zdev",
+      "category": "productivity"
+    }
+  ]
+}
