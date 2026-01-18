@@ -1,5 +1,4 @@
 ---
-name: issue-end
 description: End working on current issue - merge PR, close issue, and remove worktree
 allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git status:*), Bash(git fetch:*), Bash(git rebase:*), Bash(git push:*), Bash(cd:*), Bash(pwd:*), Bash(gh pr:*), Bash(gh issue:*), AskUserQuestion
 ---

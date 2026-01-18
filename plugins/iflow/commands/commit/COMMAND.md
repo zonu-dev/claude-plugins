@@ -1,5 +1,4 @@
 ---
-name: commit
 description: Create a commit with semantic commit message format (Type: Emoji #Issue Title)
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git branch:*), AskUserQuestion
 ---

@@ -1,5 +1,4 @@
 ---
-name: issue-start
 description: Start working on a GitHub issue - creates branch and sets up context
 allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), Bash(git worktree:*), Bash(cd:*), AskUserQuestion, TodoWrite
 ---

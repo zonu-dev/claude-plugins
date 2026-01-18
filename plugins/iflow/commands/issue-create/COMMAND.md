@@ -1,5 +1,4 @@
 ---
-name: issue-create
 description: Create a new GitHub issue with guided input
 allowed-tools: Bash(gh issue create:*), Bash(gh label list:*), Bash(ls:*), AskUserQuestion
 ---
