@@ -1,6 +1,6 @@
 ---
 description: Start working on a GitHub issue - creates branch and sets up context
-allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), Bash(wtp:*), AskUserQuestion, TodoWrite
+allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), AskUserQuestion, TodoWrite
 ---
 
 # Issue開発開始
@@ -22,56 +22,39 @@ gh issue view <number> --json number,title,body,labels,assignees,milestone
 
 Issue情報を表示して、ユーザーに内容を確認させます。
 
-### 2. ブランチタイプの確認
+### 2. ブランチ名の生成
 
-**AskUserQuestion** を使用して、ブランチタイプを確認してください：
-
-```
-質問: このIssueに対してどのブランチタイプを使用しますか？
-
-選択肢:
-- feature: 新機能開発
-- bugfix: バグ修正
-- hotfix: 緊急修正（本番環境の問題）
-- release: リリース準備
-```
-
-### 3. ブランチ名の生成
-
-Git-flow準拠のブランチ名を生成：
-- パターン: `<type>/<issue-number>-<sanitized-title>`
+featureブランチ名を生成：
+- パターン: `feature/<issue-number>-<sanitized-title>`
 - タイトルは小文字化し、スペースをハイフンに置換、特殊文字を除去
 - 最大50文字程度に切り詰め
 
-例:
-- `feature/42-add-user-authentication`
-- `bugfix/38-fix-login-error`
-- `hotfix/99-critical-security-patch`
+例: `feature/42-add-user-authentication`
 
-### 4. Worktreeとブランチの作成
+### 3. ブランチの作成とチェックアウト
 
 ```bash
-# wtpコマンドでworktreeを作成（ブランチも同時に作成）
-wtp add -b <branch-name>
+# 最新のベースブランチを取得
+git fetch origin
+
+# ブランチを作成してチェックアウト
+git checkout -b <branch-name> origin/<base-branch>
 ```
 
-**注意:** この時点ではまだworktreeディレクトリに移動しない
-
-### 5. Todoリストの作成
+### 4. Todoリストの作成
 
 **TodoWrite** を使用して、Issue本文からタスクを抽出し、Todoリストを作成してください：
 
 - Issue本文のチェックリスト項目があれば、それをTodoに変換
 - なければ、Issue内容から主要なタスクを推測して作成
 
-### 6. 完了メッセージ
+### 5. 完了メッセージ
 
 以下を出力：
 - 作成したブランチ名
-- 作成したworktreeのパス
 - Issue概要
 - 作成したTodoリスト
-- 次のステップの案内（worktreeへの移動方法、`/issue-end`の案内を含む）
+- 次のステップの案内
 
 ## 出力例
 
@@ -79,7 +62,6 @@ wtp add -b <branch-name>
 ## Issue #42 の開発を開始しました
 
 **ブランチ:** `feature/42-add-user-authentication`
-**Worktree:** `../feature/42-add-user-authentication`
 
 **Issue概要:**
 Add user authentication using JWT tokens
@@ -91,8 +73,7 @@ Add user authentication using JWT tokens
 - [ ] テストの追加
 
 **次のステップ:**
-- `cd ../feature/42-add-user-authentication` でworktreeに移動
 - 実装を開始してください
 - 完了後: `/issue-pr` でPRを作成
-- 作業終了時: `/issue-end` でworktreeを削除
+- 作業終了時: `/issue-end` でPRマージとIssueクローズ
 ```

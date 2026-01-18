@@ -36,8 +36,8 @@ gh issue view <number> --json number,title,body,labels
 ### 4. 変更内容の確認
 
 ```bash
-git log origin/develop..HEAD --oneline
-git diff origin/develop --stat
+git log origin/main..HEAD --oneline
+git diff origin/main --stat
 ```
 
 ### 5. リモートへのプッシュ
@@ -68,7 +68,7 @@ Closes #<issue-number>
 ### 7. PRの作成
 
 ```bash
-gh pr create --title "<title>" --body "<body>" [--draft]
+gh pr create --base main --title "<title>" --body "<body>" [--draft]
 ```
 
 タイトル形式: `[#<issue-number>] <issue-title>` または変更内容に基づいて生成

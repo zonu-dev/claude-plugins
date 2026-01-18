@@ -1,11 +1,12 @@
 ---
-description: End working on current issue - merge PR and close issue
-allowed-tools: Bash(git branch:*), Bash(git status:*), Bash(git fetch:*), Bash(git rebase:*), Bash(git push:*), Bash(pwd:*), Bash(gh pr:*), Bash(gh issue:*), AskUserQuestion
+description: End working on current issue - merge PR and cleanup
+allowed-tools: Bash(git branch:*), Bash(git status:*), Bash(git fetch:*), Bash(git rebase:*), Bash(git push:*), Bash(git checkout:*), Bash(git pull:*), Bash(pwd:*), Bash(gh pr:*), AskUserQuestion
 ---
 
 # Issue作業終了
 
-関連するPRのマージとIssueのクローズを行います。
+関連するPRのマージとブランチのクリーンアップを行います。
+Issueは PRマージ時に自動的にクローズされます。
 
 ## 処理手順
 
@@ -63,33 +64,31 @@ PRが存在する場合：
    gh pr merge <pr-number> --merge  # または --squash / --rebase
    ```
 
-### 3. Issueのクローズ
+### 3. mainブランチへのチェックアウト
 
 ```bash
-# Issue状態を確認
-gh issue view <issue-number> --json state,title
+# mainブランチにチェックアウト
+git checkout main
+
+# 最新を取得
+git pull origin main
 ```
 
-**AskUserQuestion** でクローズするか確認：
-```
-質問: Issue #<number> をクローズしますか？
+### 4. ブランチの削除
 
-選択肢:
-- close: Issueをクローズする
-- skip: クローズしない（手動で対応）
-```
-
-クローズする場合：
 ```bash
-gh issue close <issue-number>
+# ローカルブランチを削除
+git branch -d <branch-name>
+
+# リモートブランチを削除
+git push origin --delete <branch-name>
 ```
 
-### 4. 完了メッセージ
+### 5. 完了メッセージ
 
 以下の情報を出力：
-- マージしたPR（ある場合）
-- クローズしたIssue（ある場合）
-- 次のステップとしてworktree削除コマンドを案内
+- マージしたPR
+- 削除したブランチ
 
 ## 出力例
 
@@ -97,13 +96,9 @@ gh issue close <issue-number>
 ## Issue #42 の作業を終了しました
 
 **マージしたPR:** #45 - Add user authentication
-**クローズしたIssue:** #42 - Add user authentication using JWT
+**削除したブランチ:** feature/42-add-user-authentication
 
 お疲れ様でした！
-
-**次のステップ:**
-worktreeを削除するには以下のコマンドを実行してください：
-wtp remove --with-branch feature/42-add-user-authentication
 ```
 
 ## 注意事項
