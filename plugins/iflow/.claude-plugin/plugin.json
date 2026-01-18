@@ -5,6 +5,5 @@
   "author": {
     "name": "zonu-dev"
   },
-  "keywords": ["github", "issues", "workflow", "git", "pull-request", "git-flow"],
-  "commands": ["./commands/"]
+  "keywords": ["github", "issues", "workflow", "git", "pull-request", "git-flow"]
 }
