@@ -1,6 +1,6 @@
 ---
 description: Start working on a GitHub issue - creates branch and sets up context
-allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), Bash(git worktree:*), Bash(cd:*), AskUserQuestion, TodoWrite
+allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), Bash(wtp:*), AskUserQuestion, TodoWrite
 ---
 
 # Issue開発開始
@@ -51,17 +51,11 @@ Git-flow準拠のブランチ名を生成：
 ### 4. Worktreeとブランチの作成
 
 ```bash
-# 最新のベースブランチを取得
-git fetch origin
-
-# 親ディレクトリにworktreeを作成（ブランチも同時に作成）
-git worktree add ../<branch-name> -b <branch-name> origin/<base-branch>
-
-# 作成したworktreeディレクトリに移動
-cd ../<branch-name>
+# wtpコマンドでworktreeを作成（ブランチも同時に作成）
+wtp add -b <branch-name>
 ```
 
-**Worktreeのパス:** `../<branch-name>`（リポジトリの親ディレクトリに作成）
+**注意:** この時点ではまだworktreeディレクトリに移動しない
 
 ### 5. Todoリストの作成
 
@@ -75,10 +69,9 @@ cd ../<branch-name>
 以下を出力：
 - 作成したブランチ名
 - 作成したworktreeのパス
-- 移動先ディレクトリの確認
 - Issue概要
 - 作成したTodoリスト
-- 次のステップの案内（`/issue-end`の案内を含む）
+- 次のステップの案内（worktreeへの移動方法、`/issue-end`の案内を含む）
 
 ## 出力例
 
@@ -87,7 +80,6 @@ cd ../<branch-name>
 
 **ブランチ:** `feature/42-add-user-authentication`
 **Worktree:** `../feature/42-add-user-authentication`
-**現在のディレクトリ:** 上記worktreeに移動済み
 
 **Issue概要:**
 Add user authentication using JWT tokens
@@ -99,6 +91,7 @@ Add user authentication using JWT tokens
 - [ ] テストの追加
 
 **次のステップ:**
+- `cd ../feature/42-add-user-authentication` でworktreeに移動
 - 実装を開始してください
 - 完了後: `/issue-pr` でPRを作成
 - 作業終了時: `/issue-end` でworktreeを削除
