@@ -48,20 +48,32 @@ PRが存在する場合：
    git push --force-with-lease
    ```
 
-3. **AskUserQuestion** でマージ方法を確認：
-   ```
-   質問: PRをマージしますか？
-
-   選択肢:
-   - merge: 通常のマージコミット
-   - squash: すべてのコミットを1つにまとめる
-   - rebase: リベースマージ
-   - skip: マージしない（手動で対応）
-   ```
-
-4. マージを実行：
+3. PRのコミット一覧を取得：
    ```bash
-   gh pr merge <pr-number> --merge  # または --squash / --rebase
+   gh pr view <pr-number> --json commits --jq '.commits[].messageHeadline'
+   ```
+
+4. Squashマージを実行：
+
+   PRタイトルをそのままコミットタイトルとして使用し、本文にコミット一覧を含めます。
+
+   ```bash
+   gh pr merge <pr-number> --squash --subject "<PRタイトル>" --body "$(cat <<'EOF'
+   - <コミット1のメッセージ>
+   - <コミット2のメッセージ>
+   - <コミット3のメッセージ>
+   EOF
+   )"
+   ```
+
+   **コミットメッセージの例:**
+   ```
+   feat: ✨ #3 学習カードをアコーディオン式UIに変更
+
+   - feat: ✨ カードフリップをアコーディオン展開式UIに変更
+   - fix: 🔧 CI typecheck前にbuildステップを追加
+   - fix: 🔧 originLanguageのバリデーションを削除
+   - refactor: 🧹 未使用のpropsと変数を削除
    ```
 
 ### 3. mainブランチへのチェックアウト
