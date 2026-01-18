@@ -1,5 +1,4 @@
 ---
-name: issue-pr
 description: Create a pull request linked to the current issue
 allowed-tools: Bash(gh pr create:*), Bash(gh issue view:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(git status:*), Bash(git branch:*)
 ---

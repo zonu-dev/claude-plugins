@@ -1,5 +1,4 @@
 ---
-name: issue-plan
 description: Plan implementation for a GitHub issue with structured clarification questions
 allowed-tools: Bash(gh issue view:*), Bash(gh issue edit:*), Glob, Grep, Read, Task, AskUserQuestion, Write, EnterPlanMode
 ---

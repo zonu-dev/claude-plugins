@@ -1,5 +1,4 @@
 ---
-name: issue-update
 description: Update GitHub issue status, labels, or assignees
 allowed-tools: Bash(gh issue edit:*), Bash(gh issue close:*), Bash(gh issue reopen:*), Bash(gh issue comment:*), Bash(gh issue view:*)
 ---
