@@ -1,6 +1,6 @@
 ---
+name: issue-update
 description: Update GitHub issue status, labels, or assignees
-argument-hint: "<issue_number> [--status <status>] [--add-label <name>] [--comment <text>]"
 allowed-tools: Bash(gh issue edit:*), Bash(gh issue close:*), Bash(gh issue reopen:*), Bash(gh issue comment:*), Bash(gh issue view:*)
 ---
 

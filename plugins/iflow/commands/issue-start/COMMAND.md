@@ -1,7 +1,7 @@
 ---
+name: issue-start
 description: Start working on a GitHub issue - creates branch and sets up context
-argument-hint: "<issue_number> [--base <branch>]"
-allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), AskUserQuestion, TodoWrite
+allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(git pull:*), Bash(git fetch:*), Bash(git worktree:*), Bash(cd:*), AskUserQuestion, TodoWrite
 ---
 
 # Issue開発開始
@@ -49,17 +49,20 @@ Git-flow準拠のブランチ名を生成：
 - `bugfix/38-fix-login-error`
 - `hotfix/99-critical-security-patch`
 
-### 4. ブランチの作成
+### 4. Worktreeとブランチの作成
 
 ```bash
 # 最新のベースブランチを取得
 git fetch origin
-git checkout <base-branch>
-git pull origin <base-branch>
 
-# 新しいブランチを作成
-git checkout -b <branch-name>
+# 親ディレクトリにworktreeを作成（ブランチも同時に作成）
+git worktree add ../<branch-name> -b <branch-name> origin/<base-branch>
+
+# 作成したworktreeディレクトリに移動
+cd ../<branch-name>
 ```
+
+**Worktreeのパス:** `../<branch-name>`（リポジトリの親ディレクトリに作成）
 
 ### 5. Todoリストの作成
 
@@ -72,9 +75,11 @@ git checkout -b <branch-name>
 
 以下を出力：
 - 作成したブランチ名
+- 作成したworktreeのパス
+- 移動先ディレクトリの確認
 - Issue概要
 - 作成したTodoリスト
-- 次のステップの案内
+- 次のステップの案内（`/issue-end`の案内を含む）
 
 ## 出力例
 
@@ -82,6 +87,8 @@ git checkout -b <branch-name>
 ## Issue #42 の開発を開始しました
 
 **ブランチ:** `feature/42-add-user-authentication`
+**Worktree:** `../feature/42-add-user-authentication`
+**現在のディレクトリ:** 上記worktreeに移動済み
 
 **Issue概要:**
 Add user authentication using JWT tokens
@@ -95,4 +102,5 @@ Add user authentication using JWT tokens
 **次のステップ:**
 - 実装を開始してください
 - 完了後: `/issue-pr` でPRを作成
+- 作業終了時: `/issue-end` でworktreeを削除
 ```
