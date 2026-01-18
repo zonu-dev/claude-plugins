@@ -1,6 +1,6 @@
 ---
+name: issue-create
 description: Create a new GitHub issue with guided input
-argument-hint: "[--title <title>] [--template <name>] [--label <name>]"
 allowed-tools: Bash(gh issue create:*), Bash(gh label list:*), Bash(ls:*), AskUserQuestion
 ---
 

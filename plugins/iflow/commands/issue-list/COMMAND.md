@@ -1,6 +1,6 @@
 ---
+name: issue-list
 description: List and search GitHub issues with filtering options
-argument-hint: "[--mine|--all] [--label <name>] [--search <query>]"
 allowed-tools: Bash(gh issue list:*), Bash(gh issue view:*)
 ---
 
