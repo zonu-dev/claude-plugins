@@ -102,14 +102,14 @@ gh issue view <number> --json number,title,state,labels,assignees,milestone
 
 ```bash
 # Issueをクローズ
-/issue-update 42 --status closed
+/iflow:issue-update 42 --status closed
 
 # ラベルを追加
-/issue-update 42 --add-label "in-progress"
+/iflow:issue-update 42 --add-label "in-progress"
 
 # コメントを追加
-/issue-update 42 --comment "作業開始しました"
+/iflow:issue-update 42 --comment "作業開始しました"
 
 # 複合操作
-/issue-update 42 --status closed --add-label "done" --comment "完了"
+/iflow:issue-update 42 --status closed --add-label "done" --comment "完了"
 ```

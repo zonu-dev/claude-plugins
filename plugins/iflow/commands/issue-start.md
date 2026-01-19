@@ -74,6 +74,6 @@ Add user authentication using JWT tokens
 
 **次のステップ:**
 - 実装を開始してください
-- 完了後: `/issue-pr` でPRを作成
-- 作業終了時: `/issue-end` でPRマージとIssueクローズ
+- 完了後: `/iflow:issue-pr` でPRを作成
+- 作業終了時: `/iflow:issue-end` でPRマージとIssueクローズ
 ```
