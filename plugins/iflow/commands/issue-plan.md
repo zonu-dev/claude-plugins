@@ -1,6 +1,6 @@
 ---
 description: Plan implementation for a GitHub issue with structured clarification questions
-allowed-tools: Bash(gh issue view:*), Bash(gh issue edit:*), Bash(gh label list:*), Glob, Grep, Read, Task, AskUserQuestion, Write, EnterPlanMode
+allowed-tools: Bash(gh issue view:*), Bash(gh issue edit:*), Bash(gh issue list:*), Bash(gh label list:*), Glob, Grep, Read, Task, AskUserQuestion, Write, EnterPlanMode
 ---
 
 # Issue計画・深掘り
@@ -10,9 +10,19 @@ Issueの内容を分析し、構造化された質問で曖昧さを解消しな
 
 ## 引数
 
-- `<issue_number>`: 計画を立てるIssue番号（必須）
+- `<issue_number>`: 計画を立てるIssue番号
 
 ## 処理手順
+
+### Phase 0: Issue番号の確認
+
+Issue番号が指定されていない場合は、Issue一覧を表示して選択を促す：
+
+```bash
+gh issue list --assignee "@me" --state open --json number,title,labels --limit 10
+```
+
+一覧を表示後、ユーザーにIssue番号の入力を求める。
 
 ### Phase 1: Issue情報の収集
 
