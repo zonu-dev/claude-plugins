@@ -70,7 +70,7 @@ gh issue create \
 以下を出力：
 - 作成されたIssue URL
 - Issue番号
-- `/issue-start` で開発開始を促すメッセージ
+- `/iflow:issue-start` で開発開始を促すメッセージ
 
 ## Issue本文テンプレート
 
@@ -134,6 +134,6 @@ gh issue create \
 **ラベル:** enhancement, auth
 
 **次のステップ:**
-- 開発を開始: `/issue-start 43`
-- Issueを分析: `/issue-analyze 43`
+- 開発を開始: `/iflow:issue-start 43`
+- Issueを分析: `/iflow:issue-plan 43`
 ```
