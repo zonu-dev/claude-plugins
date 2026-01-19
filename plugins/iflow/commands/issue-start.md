@@ -14,6 +14,16 @@ allowed-tools: Bash(gh issue:*), Bash(git checkout:*), Bash(git branch:*), Bash(
 
 ## 処理手順
 
+### 0. Issue番号の確認
+
+Issue番号が指定されていない場合は、Issue一覧を表示して選択を促す：
+
+```bash
+gh issue list --assignee "@me" --state open --json number,title,labels --limit 10
+```
+
+一覧を表示後、ユーザーにIssue番号の入力を求める。
+
 ### 1. Issue情報の取得
 
 ```bash
