@@ -1,6 +1,6 @@
 ---
 description: Create a pull request linked to the current issue
-allowed-tools: Bash(gh pr create:*), Bash(gh issue view:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(git status:*), Bash(git branch:*)
+allowed-tools: Bash, Glob, Grep, Read, Edit, Write, Task
 ---
 
 # Issue連携PR作成
@@ -40,14 +40,51 @@ git log origin/main..HEAD --oneline
 git diff origin/main --stat
 ```
 
-### 5. リモートへのプッシュ
+### 5. 品質チェックの実行
+
+PR作成前にプロジェクトの品質チェックを実行します。
+
+#### 5.1 チェックコマンドの特定
+
+以下のファイルを確認してチェックコマンドを特定：
+
+- `package.json`: npm scripts（lint, test, build, check, typecheck など）
+- `Makefile`: make targets
+- `CLAUDE.md`: プロジェクト固有の指示
+- その他設定ファイル（`.github/workflows/*.yml` など）
+
+#### 5.2 チェックの実行
+
+特定したチェックコマンドを実行：
+
+```bash
+# 例: Node.jsプロジェクトの場合
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+#### 5.3 エラー修正（必要に応じて）
+
+チェックでエラーが発生した場合：
+
+1. エラー内容を分析
+2. 該当ファイルを修正
+3. `/iflow:commit` でコミット
+4. 再度チェックを実行
+5. すべてのチェックが通過するまで繰り返す
+
+**注意:** チェックが通過するまでPR作成に進まないこと。
+
+### 6. リモートへのプッシュ
 
 未プッシュの場合：
 ```bash
 git push -u origin <current-branch>
 ```
 
-### 6. PR本文の生成
+### 7. PR本文の生成
 
 以下の形式でPR本文を生成：
 
@@ -65,7 +102,7 @@ Closes #<issue-number>
 <!-- テスト方法を記述 -->
 ```
 
-### 7. PRの作成
+### 8. PRの作成
 
 ```bash
 gh pr create --base main --title "<title>" --body "<body>" [--draft]
@@ -73,7 +110,7 @@ gh pr create --base main --title "<title>" --body "<body>" [--draft]
 
 タイトル形式: `[#<issue-number>] <issue-title>` または変更内容に基づいて生成
 
-### 8. 完了メッセージ
+### 9. 完了メッセージ
 
 以下を出力：
 - PR URL
