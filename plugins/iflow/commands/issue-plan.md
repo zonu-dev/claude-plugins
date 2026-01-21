@@ -271,17 +271,6 @@ EOF
 )"
 ```
 
-または、Issueにコメントとして追加：
-
-```bash
-gh issue comment <number> --body "$(cat <<'EOF'
-## Implementation Plan
-
-<計画の内容>
-EOF
-)"
-```
-
 ## 出力例
 
 ```markdown
