@@ -1,5 +1,5 @@
 ---
-description: "スキルを作成し、レビュー・自動修正まで行う。「スキルを作成」「新しいスキルを作って」「スキル作成して」などのリクエストで起動します。"
+description: スキルを作成し、レビュー・自動修正まで行う
 argument-hint: "[スキル名] [スキルの説明]"
 disable-model-invocation: true
 ---
@@ -70,6 +70,15 @@ TaskCreateツールで以下の3つのタスクを作成:
 3. 「レビュー結果に基づいて自動修正」（activeForm: スキルを自動修正している）
 
 タスク#1をin_progressに更新してから次へ進む。
+
+### 前提条件の確認
+
+`example-skills` プラグインがインストールされているか確認します。Skillツールで `example-skills:skill-creator` の呼び出しが失敗した場合は、以下のインストール手順をユーザーに提示して終了します：
+
+```
+1. /plugin marketplace add anthropics/skills
+2. /plugin install example-skills@anthropic-agent-skills
+```
 
 ### skill-creatorの実行
 

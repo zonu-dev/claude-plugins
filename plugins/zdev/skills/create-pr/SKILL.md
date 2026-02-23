@@ -1,6 +1,6 @@
 ---
 description: 現在のブランチからPull Requestを作成し、関連するIssueと連携する
-allowed-tools: Bash(git:*), Bash(gh pr:*), Bash(gh issue:*), Bash(npm run:*), Bash(make:*), Bash(npx:*), Bash(pnpm:*), Bash(bun:*), Glob, Grep, Read, Edit, Write, Task
+allowed-tools: Bash(git status:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr:*), Bash(gh issue view:*), Bash(npm run:*), Bash(make:*), Bash(npx:*), Bash(pnpm:*), Bash(bun:*), Glob, Grep, Read, Edit, Write, Task
 disable-model-invocation: true
 ---
 

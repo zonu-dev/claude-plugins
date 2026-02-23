@@ -60,7 +60,17 @@ git fetch origin
 git checkout -b <branch-name> origin/<base-branch>
 ```
 
-### 5. タスクリストの作成
+### 5. ブランチ作成の検証
+
+ブランチが正しく作成されたことを確認：
+
+```bash
+git branch --show-current
+```
+
+期待するブランチ名と一致しない場合はエラーを表示して終了。
+
+### 6. タスクリストの作成
 
 **TaskCreate** を使用して、Issue本文からタスクを抽出し、タスクリストを作成してください：
 
@@ -68,7 +78,7 @@ git checkout -b <branch-name> origin/<base-branch>
 - なければ、Issue内容から主要なタスクを推測して作成
 - 各タスクには `activeForm`（進行形）を設定する
 
-### 6. 完了メッセージ
+### 7. 完了メッセージ
 
 以下を出力：
 - 作成したブランチ名

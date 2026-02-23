@@ -1,6 +1,6 @@
 ---
 description: GitHub Issueのステータス、ラベル、アサインなどを更新する
-allowed-tools: Bash(gh issue edit:*), Bash(gh issue close:*), Bash(gh issue reopen:*), Bash(gh issue comment:*), Bash(gh issue view:*)
+allowed-tools: Bash(gh issue edit:*), Bash(gh issue close:*), Bash(gh issue reopen:*), Bash(gh issue comment:*), Bash(gh issue view:*), AskUserQuestion
 disable-model-invocation: true
 ---
 
@@ -35,6 +35,17 @@ gh issue view <number> --json number,title,state,labels,assignees,milestone
 指定された操作を順番に実行：
 
 #### ステータス変更
+
+**クローズ・再オープンは実行前に AskUserQuestion で確認する：**
+
+```
+質問: Issue #<number> を <close/reopen> します。よろしいですか？
+選択肢:
+- 実行する: ステータスを変更
+- キャンセル: 変更せずに終了
+```
+
+承認された場合のみ実行：
 ```bash
 # クローズ
 gh issue close <number>

@@ -18,6 +18,7 @@ Personal dev toolkit for Claude Code。
 | `review-skill` | スキルを公式ベストプラクティスに基づいてレビュー |
 | `review-rule` | ルールファイルをベストプラクティスに基づいてレビュー |
 | `review-agent` | エージェント定義ファイルをベストプラクティスに基づいてレビュー |
+| `review-instructions` | CLAUDE.mdをベストプラクティスに基づいてレビュー |
 | `create-agent` | エージェント作成・レビュー・自動修正 |
 
 ## インストール

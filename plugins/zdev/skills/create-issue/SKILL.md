@@ -46,7 +46,7 @@ gh label list --json name,description --limit 20
 
 ### 4. Issue内容の入力
 
-**AskUserQuestion** を使用して以下を収集：
+**AskUserQuestion** を使用して以下を **1つずつ順番に** 質問：
 
 1. **タイトル**（--titleで指定されていない場合）
 2. **説明**
@@ -54,7 +54,7 @@ gh label list --json name,description --limit 20
    - Feature: 背景、提案内容、受け入れ基準
    - Task: 詳細な作業内容
 3. **ラベル**（選択式）
-4. **アサイン先**（オプション）
+4. **アサイン先**（任意）
 
 ### 5. Issueの作成
 

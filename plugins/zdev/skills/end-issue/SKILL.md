@@ -56,7 +56,19 @@ git rebase origin/<base-branch>
 
 # コンフリクトが発生した場合は解決してから続行
 
-# リモートにforce push
+# リモートにforce push（実行前にユーザー確認を取る）
+```
+
+**AskUserQuestion** で確認：
+```
+質問: rebase後にforce pushを実行します。よろしいですか？
+選択肢:
+- 実行する: force-with-leaseで安全にpush
+- キャンセル: pushせずに終了
+```
+
+承認された場合のみ実行：
+```bash
 git push --force-with-lease
 ```
 
@@ -92,22 +104,25 @@ EOF
 
 **コミットメッセージの例:**
 ```
-feat: ✨ #3 学習カードをアコーディオン式UIに変更
+<PRタイトル>
 
-- feat: ✨ カードフリップをアコーディオン展開式UIに変更
-- fix: 🔧 CI typecheck前にbuildステップを追加
-- fix: 🔧 originLanguageのバリデーションを削除
-- refactor: 🧹 未使用のpropsと変数を削除
+- <コミット1のメッセージ>
+- <コミット2のメッセージ>
+- <コミット3のメッセージ>
 ```
 
-### 6. mainブランチへのチェックアウト
+プロジェクトのコミット規約に従ってフォーマットしてください。
+
+### 6. ベースブランチへのチェックアウト
+
+ステップ3で取得したベースブランチに戻ります：
 
 ```bash
-# mainブランチにチェックアウト
-git checkout main
+# ベースブランチにチェックアウト
+git checkout <base-branch>
 
 # 最新を取得
-git pull origin main
+git pull origin <base-branch>
 ```
 
 ### 7. ブランチの削除

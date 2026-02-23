@@ -1,7 +1,6 @@
 ---
-description: GitHub Issueの一覧表示とフィルタリング検索を行う
+description: GitHub Issueの一覧表示とフィルタリング検索を行う。「Issue一覧」「Issueを検索」「アサインされたIssue」「Issueを見せて」などのリクエストで起動する。
 allowed-tools: Bash(gh issue list:*), Bash(gh issue view:*)
-disable-model-invocation: true
 ---
 
 # Issue一覧・検索
