@@ -16,6 +16,9 @@ Personal dev toolkit for Claude Code。
 | `commit` | セマンティックコミット作成 |
 | `create-skill` | スキル作成・レビュー・自動修正 |
 | `review-skill` | スキルを公式ベストプラクティスに基づいてレビュー |
+| `review-rule` | ルールファイルをベストプラクティスに基づいてレビュー |
+| `review-agent` | エージェント定義ファイルをベストプラクティスに基づいてレビュー |
+| `create-agent` | エージェント作成・レビュー・自動修正 |
 
 ## インストール
 
