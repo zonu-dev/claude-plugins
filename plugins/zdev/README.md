@@ -12,6 +12,7 @@ Personal dev toolkit for Claude Code。
 | `start-issue` | Issueからブランチ作成・開発開始 |
 | `update-issue` | Issueステータス・ラベル更新 |
 | `create-pr` | Issue連携PR作成 |
+| `review-pr` | PRコードレビュー（差分分析・指摘・アクション実行） |
 | `end-issue` | 作業終了（PRマージ・Issueクローズ・worktree削除） |
 | `commit` | セマンティックコミット作成 |
 | `create-skill` | スキル作成・レビュー・自動修正 |
@@ -60,7 +61,10 @@ Personal dev toolkit for Claude Code。
 # 6. PRを作成
 /create-pr
 
-# 7. 作業終了（worktree削除）
+# 7. PRレビュー
+/review-pr 123
+
+# 8. 作業終了（worktree削除）
 /end-issue
 ```
 
@@ -96,6 +100,16 @@ Personal dev toolkit for Claude Code。
 /create-pr                # 現在のブランチからPR作成
 /create-pr --draft        # ドラフトPRとして作成
 ```
+
+### `review-pr <number|URL>`
+```bash
+/review-pr 123            # PR #123をレビュー
+/review-pr https://github.com/owner/repo/pull/123
+```
+- コード品質・セキュリティ・パフォーマンス・テスト・設計の観点で分析
+- CI/CDステータスを確認
+- 構造化されたレビューレポートを生成
+- Approve / Request Changes / Comment アクションを実行
 
 ### `commit`
 ```bash
