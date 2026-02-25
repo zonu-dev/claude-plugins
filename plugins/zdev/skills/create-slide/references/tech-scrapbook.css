@@ -1,0 +1,509 @@
+/* @theme tech-scrapbook */
+@import 'default';
+
+/* ============================================================
+   Tech Scrapbook - Marp Custom Theme
+   10 color palettes switchable via CSS classes.
+   Usage: theme: tech-scrapbook + class: palette-ocean
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Base styles (shared across all palettes)
+   ---------------------------------------------------------- */
+section {
+  position: relative;
+  font-size: 28px;
+  padding: 72px 60px 40px;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+}
+
+section table {
+  font-size: 0.78em;
+}
+
+section pre {
+  margin: 0.4em 0;
+}
+
+section pre code {
+  font-size: 0.7em;
+  line-height: 1.4;
+}
+
+section h2 {
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+}
+
+section h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+section ul,
+section ol {
+  margin: 0.3em 0;
+}
+
+section p {
+  margin: 0.3em 0;
+}
+
+section code {
+  border-radius: 4px;
+}
+
+/* ----------------------------------------------------------
+   Footnotes - slide bottom annotations
+   Usage:
+     テキスト中: SRS<sup>※1</sup>
+     スライド末尾: <div class="footnotes">※1 SRS: 説明...</div>
+   ---------------------------------------------------------- */
+section div.footnotes {
+  position: absolute;
+  bottom: 21px;
+  left: 60px;
+  right: 60px;
+  font-size: 0.48em;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 4px;
+}
+
+section .footnotes p {
+  margin: 0;
+}
+
+/* Dark backgrounds */
+section.lead .footnotes,
+section.palette-midnight .footnotes {
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Superscript markers */
+section sup {
+  font-size: 0.6em;
+  color: rgba(0, 0, 0, 0.4);
+  vertical-align: super;
+  line-height: 0;
+}
+
+section.lead sup,
+section.palette-midnight sup {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Theme-aware diagram switching */
+section .diagram-theme-switch {
+  --diagram-width: 950px;
+}
+
+section .diagram-theme-switch img {
+  width: var(--diagram-width);
+  max-width: 100%;
+  height: auto;
+}
+
+section .diagram-theme-switch .diagram-midnight {
+  display: none;
+}
+
+section.palette-midnight .diagram-theme-switch .diagram-default {
+  display: none;
+}
+
+section.palette-midnight .diagram-theme-switch .diagram-midnight {
+  display: block;
+}
+
+/* ----------------------------------------------------------
+   Default palette: Charcoal Minimal
+   Light background, high code readability
+   ---------------------------------------------------------- */
+section {
+  background: #fafafa;
+  color: #2d2d2d;
+  --header-footer-color: rgba(45, 45, 45, 0.48);
+  --paginate-color: rgba(45, 45, 45, 0.38);
+}
+
+section h1,
+section h2,
+section h3 {
+  color: #333333;
+}
+
+section a {
+  color: #4a6fa5;
+}
+
+section code {
+  background: #e8e8e8;
+  color: #2d2d2d;
+}
+
+section.lead {
+  background: #333333;
+  color: #fafafa;
+  color-scheme: dark;
+  --header-footer-color: rgba(255, 255, 255, 0.6);
+  --paginate-color: rgba(255, 255, 255, 0.48);
+}
+
+section.lead h1,
+section.lead h2 {
+  color: #ffffff;
+}
+
+section.lead a {
+  color: #8ab4f8;
+}
+
+/* ----------------------------------------------------------
+   palette-midnight: Midnight Executive
+   Dark background, code stands out
+   ---------------------------------------------------------- */
+section.palette-midnight {
+  background: #1a1b2e;
+  color: #e0e0e0;
+  color-scheme: dark;
+  --header-footer-color: rgba(225, 230, 255, 0.64);
+  --paginate-color: rgba(225, 230, 255, 0.5);
+  --fgColor-default: #e0e0e0;
+  --fgColor-muted: rgba(224, 224, 224, 0.75);
+  --bgColor-default: #1f2234;
+  --bgColor-muted: #24283d;
+  --bgColor-neutral-muted: rgba(255, 255, 255, 0.12);
+  --borderColor-default: rgba(255, 255, 255, 0.2);
+  --borderColor-muted: rgba(255, 255, 255, 0.14);
+  --color-prettylights-syntax-storage-modifier-import: #e6edf3;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+}
+
+section.palette-midnight h1,
+section.palette-midnight h2,
+section.palette-midnight h3 {
+  color: #8ab4f8;
+}
+
+section.palette-midnight a {
+  color: #bb86fc;
+}
+
+section.palette-midnight code {
+  background: #2a2b3e;
+  color: #e0e0e0;
+}
+
+section.palette-midnight table tr {
+  background-color: #1f2234;
+}
+
+section.palette-midnight table tr:nth-child(2n) {
+  background-color: #24283d;
+}
+
+section.palette-midnight table td,
+section.palette-midnight table th {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+section.palette-midnight pre {
+  background-color: #24283d;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+section.palette-midnight.lead {
+  background: #0d0e1a;
+  color: #8ab4f8;
+}
+
+/* ----------------------------------------------------------
+   palette-forest: Forest & Moss
+   Nature / growth theme
+   ---------------------------------------------------------- */
+section.palette-forest {
+  background: #f5f7f2;
+  color: #2d3a2d;
+  --header-footer-color: rgba(45, 58, 45, 0.46);
+  --paginate-color: rgba(45, 58, 45, 0.34);
+}
+
+section.palette-forest h1,
+section.palette-forest h2,
+section.palette-forest h3 {
+  color: #2e7d32;
+}
+
+section.palette-forest a {
+  color: #558b2f;
+}
+
+section.palette-forest code {
+  background: #e8f0e2;
+  color: #2d3a2d;
+}
+
+section.palette-forest.lead {
+  background: #2e7d32;
+  color: #f5f7f2;
+}
+
+section.palette-forest.lead h1,
+section.palette-forest.lead h2 {
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-coral: Coral Energy
+   Clear contrast for comparison slides
+   ---------------------------------------------------------- */
+section.palette-coral {
+  background: #fff8f5;
+  color: #3d2c2c;
+  --header-footer-color: rgba(61, 44, 44, 0.46);
+  --paginate-color: rgba(61, 44, 44, 0.34);
+}
+
+section.palette-coral h1,
+section.palette-coral h2,
+section.palette-coral h3 {
+  color: #d84315;
+}
+
+section.palette-coral a {
+  color: #e64a19;
+}
+
+section.palette-coral code {
+  background: #fbe9e7;
+  color: #3d2c2c;
+}
+
+section.palette-coral.lead {
+  background: #d84315;
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-terracotta: Warm Terracotta
+   Design / craft topics
+   ---------------------------------------------------------- */
+section.palette-terracotta {
+  background: #fdf6f0;
+  color: #3e2c1e;
+  --header-footer-color: rgba(62, 44, 30, 0.47);
+  --paginate-color: rgba(62, 44, 30, 0.35);
+}
+
+section.palette-terracotta h1,
+section.palette-terracotta h2,
+section.palette-terracotta h3 {
+  color: #a0522d;
+}
+
+section.palette-terracotta a {
+  color: #c06030;
+}
+
+section.palette-terracotta code {
+  background: #f0e4d8;
+  color: #3e2c1e;
+}
+
+section.palette-terracotta.lead {
+  background: #a0522d;
+  color: #fdf6f0;
+}
+
+section.palette-terracotta.lead h1,
+section.palette-terracotta.lead h2 {
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-ocean: Ocean Gradient
+   Tech / data topics
+   ---------------------------------------------------------- */
+section.palette-ocean {
+  background: #f0f7ff;
+  color: #1a2a3a;
+  --header-footer-color: rgba(26, 42, 58, 0.46);
+  --paginate-color: rgba(26, 42, 58, 0.34);
+}
+
+section.palette-ocean h1,
+section.palette-ocean h2,
+section.palette-ocean h3 {
+  color: #0277bd;
+}
+
+section.palette-ocean a {
+  color: #0288d1;
+}
+
+section.palette-ocean code {
+  background: #e1f0fa;
+  color: #1a2a3a;
+}
+
+section.palette-ocean.lead {
+  background: #0277bd;
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-teal: Teal Trust
+   Trust / healthcare topics
+   ---------------------------------------------------------- */
+section.palette-teal {
+  background: #f0faf8;
+  color: #1a3a35;
+  --header-footer-color: rgba(26, 58, 53, 0.46);
+  --paginate-color: rgba(26, 58, 53, 0.34);
+}
+
+section.palette-teal h1,
+section.palette-teal h2,
+section.palette-teal h3 {
+  color: #00796b;
+}
+
+section.palette-teal a {
+  color: #00897b;
+}
+
+section.palette-teal code {
+  background: #e0f2f1;
+  color: #1a3a35;
+}
+
+section.palette-teal.lead {
+  background: #00796b;
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-berry: Berry & Cream
+   Creative / premium topics
+   ---------------------------------------------------------- */
+section.palette-berry {
+  background: #fdf5f9;
+  color: #2e1a2e;
+  --header-footer-color: rgba(46, 26, 46, 0.46);
+  --paginate-color: rgba(46, 26, 46, 0.34);
+}
+
+section.palette-berry h1,
+section.palette-berry h2,
+section.palette-berry h3 {
+  color: #880e4f;
+}
+
+section.palette-berry a {
+  color: #ad1457;
+}
+
+section.palette-berry code {
+  background: #fce4ec;
+  color: #2e1a2e;
+}
+
+section.palette-berry.lead {
+  background: #880e4f;
+  color: #fdf5f9;
+}
+
+section.palette-berry.lead h1,
+section.palette-berry.lead h2 {
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-cherry: Cherry Bold
+   High-impact presentations
+   ---------------------------------------------------------- */
+section.palette-cherry {
+  background: #fff5f5;
+  color: #2d1a1a;
+  --header-footer-color: rgba(45, 26, 26, 0.46);
+  --paginate-color: rgba(45, 26, 26, 0.34);
+}
+
+section.palette-cherry h1,
+section.palette-cherry h2,
+section.palette-cherry h3 {
+  color: #c62828;
+}
+
+section.palette-cherry a {
+  color: #d32f2f;
+}
+
+section.palette-cherry code {
+  background: #ffebee;
+  color: #2d1a1a;
+}
+
+section.palette-cherry.lead {
+  background: #c62828;
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   palette-sage: Sage Calm
+   Education / wellness topics
+   ---------------------------------------------------------- */
+section.palette-sage {
+  background: #f7f9f5;
+  color: #2d3530;
+  --header-footer-color: rgba(45, 53, 48, 0.46);
+  --paginate-color: rgba(45, 53, 48, 0.34);
+}
+
+section.palette-sage h1,
+section.palette-sage h2,
+section.palette-sage h3 {
+  color: #5d7a5f;
+}
+
+section.palette-sage a {
+  color: #6b8e6b;
+}
+
+section.palette-sage code {
+  background: #e8ede5;
+  color: #2d3530;
+}
+
+section.palette-sage.lead {
+  background: #5d7a5f;
+  color: #f7f9f5;
+}
+
+section.palette-sage.lead h1,
+section.palette-sage.lead h2 {
+  color: #ffffff;
+}
+
+/* Keep fenced code blocks controlled by pre background, not inline code styles */
+section[class*="palette-"] :is(pre, marp-pre) > code,
+section[class*="palette-"] :is(pre, marp-pre) code,
+section.lead :is(pre, marp-pre) > code,
+section.lead :is(pre, marp-pre) code,
+section :is(pre, marp-pre) > code,
+section :is(pre, marp-pre) code {
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+}

@@ -75,6 +75,45 @@ description: "指定テーマで Marp スライドを作成し、聴衆・発表
 
 `slides/<ファイル名>.md` に書き出す。既存シリーズがある場合は同じディレクトリ（例: `slides/etymo-learn/`）に配置する。
 
+#### 環境セットアップ
+
+スライド作成前に、プロジェクトの環境を確認し、不足があればセットアップする。
+
+**1. Marp CLI の導入**（`package.json` に `@marp-team/marp-cli` がない場合）
+
+```bash
+npm install --save-dev @marp-team/marp-cli
+```
+
+`package.json` の `scripts` に以下を追加する（既存のものがあればスキップ）:
+
+```json
+{
+  "scripts": {
+    "marp:preview": "marp --no-config-file -s slides/",
+    "marp:pdf": "marp --no-config-file --allow-local-files --pdf"
+  }
+}
+```
+
+**2. テーマの導入**（`slides/themes/tech-scrapbook.css` がない場合）
+
+1. テーマ CSS をプロジェクトにコピーする
+   ```bash
+   mkdir -p slides/themes
+   cp <このスキルの references/tech-scrapbook.css> slides/themes/tech-scrapbook.css
+   ```
+2. `.marprc.yml`（なければ作成）にテーマパスを追加する
+   ```yaml
+   theme: slides/themes/tech-scrapbook.css
+   ```
+3. VS Code / Cursor を使う場合は `.vscode/settings.json` に追加する
+   ```json
+   { "markdown.marp.themes": ["./slides/themes/tech-scrapbook.css"] }
+   ```
+
+テーマ CSS の原本: [references/tech-scrapbook.css](references/tech-scrapbook.css)
+
 #### 必須フォーマット（tech-scrapbook テーマ）
 
 ```markdown
@@ -283,7 +322,7 @@ npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
    ```bash
    npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
    ```
-3. Markdown ソースを Read で読み、[source-check-rules.md](../review-slide/references/source-check-rules.md) の全 5 ルールでチェックする
+3. Markdown ソースを Read で読み、[source-check-rules.md](../review-slide/references/source-check-rules.md) の全 6 ルールでチェックする
 4. 全ページの PNG を Read ツールで **8 枚ずつ並列** 読み取りし、[review-checklist.md](../review-slide/references/review-checklist.md) の 17 観点で判定する
 5. 問題を報告する。問題があれば修正方針に従って修正し、次の繰り返しへ進む
 
