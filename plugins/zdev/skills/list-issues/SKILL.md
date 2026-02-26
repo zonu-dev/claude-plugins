@@ -62,8 +62,8 @@ gh auth status
 
 | # | Title | Labels | Assignees | Updated |
 |---|-------|--------|-----------|---------|
-| 42 | Add user authentication | enhancement | @user | 2024-01-15 |
-| 38 | Fix login error | bug, urgent | @user | 2024-01-14 |
+| 42 | Add user authentication | enhancement | @user | YYYY-MM-DD |
+| 38 | Fix login error | bug, urgent | @user | YYYY-MM-DD |
 
 **次のステップ:**
 - Issue詳細を確認: `gh issue view <number>`
