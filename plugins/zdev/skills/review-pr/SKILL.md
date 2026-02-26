@@ -1,6 +1,7 @@
 ---
 name: review-pr
 description: GitHub PRのコードレビューを行う。PRの差分を分析し、コード品質・セキュリティ・パフォーマンス・ベストプラクティスの観点から構造化されたレビューを提供し、ユーザーの指示に応じてコード修正を行う。
+allowed-tools: Bash(gh:*), Read, Edit, Write, Glob, Grep, AskUserQuestion
 argument-hint: "[PR番号またはURL]"
 disable-model-invocation: true
 ---

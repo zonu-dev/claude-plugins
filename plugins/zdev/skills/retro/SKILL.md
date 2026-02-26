@@ -1,6 +1,7 @@
 ---
 name: retro
 description: "スキルの問題を振り返り、根本原因を分析して再発防止の改善を行う。「振り返りをして」「スキルの問題を分析して」「再発防止の改善をして」「retroして」などのリクエストで使用する。"
+allowed-tools: Read, Edit, Glob, Grep, AskUserQuestion, Skill
 ---
 
 # retro

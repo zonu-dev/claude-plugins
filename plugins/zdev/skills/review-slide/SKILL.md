@@ -1,6 +1,7 @@
 ---
 name: review-slide
 description: "Marp スライドを PNG 画像に変換し、全ページを目視チェックして、はみ出し・レイアウト崩れを検出・報告する。「スライドをレビューして」「レイアウトを確認して」「はみ出しをチェック」などのリクエストで使用する。"
+allowed-tools: Bash(bash:*), Bash(npm run:*), Read, Edit, Glob, Grep
 ---
 
 # スライドレビュー

@@ -1,6 +1,7 @@
 ---
 name: review-rule
 description: Claude Codeのルールファイル（.claude/rules/）をベストプラクティスに基づいてレビューする。ルールの品質チェック、構造の検証、スコープの妥当性評価、改善提案を行う。「ルールをレビューして」「rulesを検証」「ルールの品質チェック」などのリクエストで起動する。
+allowed-tools: Read, Edit, Glob, Grep, AskUserQuestion
 argument-hint: "[ルールファイル名またはパス]"
 ---
 

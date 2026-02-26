@@ -1,6 +1,7 @@
 ---
 name: create-skill
 description: スキルを作成し、レビュー・自動修正まで行う
+allowed-tools: Read, Edit, Glob, AskUserQuestion, Skill, TaskCreate, TaskUpdate, TaskList
 argument-hint: "[スキル名] [スキルの説明]"
 disable-model-invocation: true
 ---

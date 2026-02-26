@@ -28,6 +28,12 @@
 
 > `disable-model-invocation: true` のスキルはユーザーが `/スキル名` で直接起動するため、トリガーワードは不要。スキル一覧でユーザーが読む説明として簡潔に「何をするか」を記述すれば十分。
 
+### allowed-tools
+- [ ] allowed-tools フィールドが存在する
+- [ ] スキル本文で使用しているツールが全て列挙されている
+- [ ] Bash ツールはコマンドプレフィックスで制限している（`Bash(git:*)` 等）
+- [ ] 不要なツールが含まれていない（最小権限の原則）
+
 ### disable-model-invocation / user-invocable
 - [ ] 副作用のあるスキル（commit, deploy, create-pr, end-issue等）には `disable-model-invocation: true` が設定されている
 - [ ] 分析・レビュー・情報提供系のスキルは `disable-model-invocation` をデフォルト（false）のままにしている
@@ -144,6 +150,7 @@
 - 用語の一貫性がない
 - ワークフローが不明確
 - SKILL.md本文の記述と参照ファイルの内容が矛盾している
+- allowed-tools が未指定
 - references/ やscripts/ に孤立ファイルがある
 
 ### Info (改善提案)

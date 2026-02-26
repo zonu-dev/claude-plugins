@@ -1,6 +1,7 @@
 ---
 name: create-pr-slide
 description: "PR の変更内容を視覚的に解説するスライドを生成し、PDF を PR ブランチにコミットして PR コメントにリンクを投稿する。"
+allowed-tools: Bash(gh:*), Bash(git:*), Bash(npx:*), Bash(mkdir:*), Read, AskUserQuestion, Skill
 argument-hint: "[PR番号]"
 disable-model-invocation: true
 ---

@@ -1,6 +1,7 @@
 ---
 name: review-instructions
 description: CLAUDE.mdファイルをベストプラクティスに基づいてレビューする。コンテンツ品質、構造、サイズ、ルールファイルとの整合性を評価し改善提案を行う。「CLAUDE.mdをレビューして」「CLAUDE.mdを検証」「CLAUDE.mdの品質チェック」などのリクエストで起動する。
+allowed-tools: Bash(which:*), Bash(command:*), Read, Edit, Glob, Grep, AskUserQuestion
 argument-hint: "[CLAUDE.mdファイルパス]"
 ---
 

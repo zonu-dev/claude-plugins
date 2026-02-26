@@ -1,6 +1,7 @@
 ---
 name: create-rule
 description: "Claude Codeのルールファイル（.claude/rules/）を作成し、妥当性判定・レビュー・自動修正まで一貫して行う。"
+allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, Skill, TaskCreate, TaskUpdate, TaskList
 argument-hint: "[ルール名] [ルールの説明]"
 disable-model-invocation: true
 ---

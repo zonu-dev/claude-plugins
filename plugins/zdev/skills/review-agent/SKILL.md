@@ -1,6 +1,7 @@
 ---
 name: review-agent
 description: Claude Codeエージェント定義ファイル（.md）をベストプラクティスに基づいてレビューする。フロントマター検証、システムプロンプト品質、ツールスコープ、モデル選定の評価、改善提案を行う。「エージェントをレビューして」「agentを検証」「エージェントの品質チェック」などのリクエストで起動する。
+allowed-tools: Read, Edit, Glob, Grep, AskUserQuestion
 ---
 
 # エージェントレビュー

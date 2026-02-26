@@ -1,6 +1,7 @@
 ---
 name: create-slide
 description: "指定テーマで Marp スライドを作成し、聴衆・発表時間・学習ゴールに合わせて構成/表現/レイアウトを改善しながら完成させる。「〜のスライドを作って」「発表資料を作成して」「この内容をわかりやすくスライド化して」などの依頼で使用する。"
+allowed-tools: Bash(npm:*), Bash(npx:*), Bash(bash:*), Bash(mkdir:*), Read, Write, Edit, Glob, Grep, AskUserQuestion
 ---
 
 # スライド作成

@@ -1,6 +1,7 @@
 ---
 name: create-agent
 description: エージェント定義ファイルを作成し、レビュー・自動修正まで行う
+allowed-tools: Read, Write, Edit, Glob, AskUserQuestion, Skill, TaskCreate, TaskUpdate, TaskList
 argument-hint: "[エージェント名] [エージェントの説明]"
 disable-model-invocation: true
 ---

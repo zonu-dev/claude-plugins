@@ -1,6 +1,7 @@
 ---
 name: review-skill
 description: Claude Codeスキルを公式ベストプラクティスに基づいてレビューする。SKILL.mdファイルのレビュー、スキル品質のチェック、スキル構造の検証、改善提案を行う。「このスキルをレビューして」「スキル品質をチェック」「SKILL.mdを検証」「このスキルを改善」などのリクエストで起動する。
+allowed-tools: Read, Edit, Glob, Grep, AskUserQuestion
 ---
 
 # スキルレビュー
@@ -32,6 +33,7 @@ description: Claude Codeスキルを公式ベストプラクティスに基づ�
 - description: 完全性、具体性、日本語であること、三人称記述
 - description（`disable-model-invocation: false` の場合のみ）: トリガーワード、使用シナリオの記載
 - disable-model-invocation: 副作用のあるスキル（commit, deploy等）に `true` が設定されているか
+- allowed-tools: スキルが使用するツールが明示的に宣言されているか
 - user-invocable: 適切に設定されているか
 
 **ボディチェック**
@@ -138,6 +140,7 @@ description: Claude Codeスキルを公式ベストプラクティスに基づ�
 - SKILL.md本文の記述と参照ファイルの実際の内容が矛盾している
 - references/ やscripts/ に孤立ファイルがある（SKILL.mdからリンクされていない）
 - `../` パスで別スキルの参照ファイルを直接参照している（symlink に移行すべき）
+- allowed-tools が未指定（スキルが使用するツールスコープが制限されていない）
 - 変更可能性のある内容（ワークフローのロジック、判定基準、出力テンプレート等）が2スキル以上で10行以上重複している。共通の参照ファイルに切り出して symlink で共有すべき
 
 ### Info
