@@ -1,4 +1,5 @@
 ---
+name: create-pr
 description: 現在のブランチからPull Requestを作成し、関連するIssueと連携する
 allowed-tools: Bash(git status:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr:*), Bash(gh issue view:*), Bash(npm run:*), Bash(make:*), Bash(npx:*), Bash(pnpm:*), Bash(bun:*), Glob, Grep, Read, Edit, Write, Task
 disable-model-invocation: true
@@ -14,6 +15,20 @@ disable-model-invocation: true
 - `--draft`: ドラフトPRとして作成
 
 ## 処理手順
+
+### 0. 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### 1. 現在のブランチ状態を確認
 
@@ -34,18 +49,28 @@ git branch --show-current
 gh issue view <number> --json number,title,body,labels
 ```
 
-### 4. 変更内容の確認
+### 4. ベースブランチの取得
+
+リポジトリのデフォルトブランチを動的に取得する:
 
 ```bash
-git log origin/main..HEAD --oneline
-git diff origin/main --stat
+gh repo view --json defaultBranchRef --jq '.defaultBranchRef.name'
 ```
 
-### 5. 品質チェックの実行
+以降、取得した値を `<base-branch>` として使用する。
+
+### 5. 変更内容の確認
+
+```bash
+git log origin/<base-branch>..HEAD --oneline
+git diff origin/<base-branch> --stat
+```
+
+### 6. 品質チェックの実行
 
 PR作成前にプロジェクトの品質チェックを実行します。
 
-#### 5.1 チェックコマンドの特定
+#### 6.1 チェックコマンドの特定
 
 以下のファイルを確認してチェックコマンドを特定：
 
@@ -54,7 +79,7 @@ PR作成前にプロジェクトの品質チェックを実行します。
 - `CLAUDE.md`: プロジェクト固有の指示
 - その他設定ファイル（`.github/workflows/*.yml` など）
 
-#### 5.2 チェックの実行
+#### 6.2 チェックの実行
 
 特定したチェックコマンドを実行：
 
@@ -66,7 +91,7 @@ npm run test
 npm run build
 ```
 
-#### 5.3 エラー修正（必要に応じて）
+#### 6.3 エラー修正（必要に応じて）
 
 チェックでエラーが発生した場合：
 
@@ -78,14 +103,14 @@ npm run build
 
 **注意:** チェックが通過するまでPR作成に進まないこと。
 
-### 6. リモートへのプッシュ
+### 7. リモートへのプッシュ
 
 未プッシュの場合：
 ```bash
 git push -u origin <current-branch>
 ```
 
-### 7. PR本文の生成
+### 8. PR本文の生成
 
 以下の形式でPR本文を生成：
 
@@ -103,15 +128,15 @@ Closes #<issue-number>
 <!-- テスト方法を記述 -->
 ```
 
-### 8. PRの作成
+### 9. PRの作成
 
 ```bash
-gh pr create --base main --title "<title>" --body "<body>" [--draft]
+gh pr create --base <base-branch> --title "<title>" --body "<body>" [--draft]
 ```
 
 タイトル形式: `[#<issue-number>] <issue-title>` または変更内容に基づいて生成
 
-### 9. 完了メッセージ
+### 10. 完了メッセージ
 
 以下を出力：
 - PR URL

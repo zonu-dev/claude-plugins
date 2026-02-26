@@ -1,36 +1,27 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、Claude Code がこのリポジトリで作業する際のガイダンスを提供する。
 
-## Repository Overview
+## リポジトリ概要
 
-This is a Claude Code plugin marketplace repository. It hosts custom plugins that can be installed via the `/plugin` command.
+Claude Code プラグインマーケットプレイスリポジトリ。`/plugin` コマンドでインストール可能なカスタムプラグインをホストする。
 
-## Structure
+## ディレクトリ構成
 
-- `.claude-plugin/marketplace.json` - Marketplace configuration and plugin registry
-- `./plugins/` - Directory for plugin implementations (defined in `pluginRoot`)
+- `.claude-plugin/marketplace.json` - マーケットプレイス設定とプラグインレジストリ
+- `plugins/` - プラグイン実装（`pluginRoot`）
+- `hooks/` - Git hooks（post-commit による自動バージョンバンプ）
+- `scripts/` - ユーティリティスクリプト（`bump-version.sh`）
 
-## Plugin Management
+## Git Workflow
 
-Install this marketplace:
-```bash
-/plugin marketplace add zonu-dev/claude-plugins
-```
+- コミットメッセージは Conventional Commits 形式を使用する
+  - `feat:` → minor バージョンバンプ
+  - `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:` → patch バージョンバンプ
+- post-commit hook がコミットタイプに応じてバージョンを自動バンプする
+- バージョンの手動変更は不要（`scripts/bump-version.sh` が自動実行される）
 
-Install a plugin from this marketplace:
-```bash
-/plugin install <plugin-name>@zonu-plugins
-```
+## プラグインの追加
 
-## Setup
-
-Clone 後に以下を実行して Git hooks を有効化する:
-```bash
-git config core.hooksPath hooks
-```
-
-## Adding New Plugins
-
-1. Create a new directory under `./plugins/`
-2. Register the plugin in `.claude-plugin/marketplace.json` by adding it to the `plugins` array
+1. `plugins/` 配下に新しいディレクトリを作成する
+2. `.claude-plugin/marketplace.json` の `plugins` 配列にプラグインを登録する

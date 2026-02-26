@@ -1,4 +1,5 @@
 ---
+name: end-issue
 description: 現在のIssue作業を終了し、PRのSquashマージとブランチのクリーンアップを行う
 allowed-tools: Bash(git branch:*), Bash(git status:*), Bash(git fetch:*), Bash(git rebase:*), Bash(git push:*), Bash(git checkout:*), Bash(git pull:*), Bash(pwd:*), Bash(gh pr:*), AskUserQuestion
 disable-model-invocation: true
@@ -10,6 +11,20 @@ disable-model-invocation: true
 Issueは PRマージ時に自動的にクローズされます。
 
 ## 処理手順
+
+### 0. 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### 1. 現在の状態を確認
 

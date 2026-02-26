@@ -1,4 +1,5 @@
 ---
+name: review-pr
 description: GitHub PRのコードレビューを行う。PRの差分を分析し、コード品質・セキュリティ・パフォーマンス・ベストプラクティスの観点から構造化されたレビューを提供し、ユーザーの指示に応じてコード修正を行う。
 argument-hint: "[PR番号またはURL]"
 disable-model-invocation: true
@@ -9,6 +10,20 @@ disable-model-invocation: true
 GitHub PRの差分を分析し、構造化されたコードレビューを提供する。
 
 ## レビューワークフロー
+
+### ステップ0: 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### ステップ1: PR情報の取得
 

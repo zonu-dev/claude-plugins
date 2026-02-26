@@ -1,4 +1,5 @@
 ---
+name: create-agent
 description: エージェント定義ファイルを作成し、レビュー・自動修正まで行う
 argument-hint: "[エージェント名] [エージェントの説明]"
 disable-model-invocation: true

@@ -1,4 +1,5 @@
 ---
+name: plan-issue
 description: GitHub Issueの内容を分析し、構造化された質問で曖昧さを解消しながら実装計画を立てる
 allowed-tools: Bash(gh issue view:*), Bash(gh issue edit:*), Bash(gh issue list:*), Bash(gh label list:*), Glob, Grep, Read, Task, AskUserQuestion, Write, EnterPlanMode
 disable-model-invocation: true
@@ -14,6 +15,20 @@ Issueの内容を分析し、構造化された質問で曖昧さを解消しな
 - `<issue_number>`: 計画を立てるIssue番号
 
 ## 処理手順
+
+### 0. 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### Phase 0: Issue番号の確認
 

@@ -1,4 +1,5 @@
 ---
+name: create-skill
 description: スキルを作成し、レビュー・自動修正まで行う
 argument-hint: "[スキル名] [スキルの説明]"
 disable-model-invocation: true
@@ -27,7 +28,7 @@ disable-model-invocation: true
 
 ---
 
-## [1/4] スキル情報の取得
+## [1/3] スキル情報の取得
 
 ### 引数の解析
 
@@ -60,7 +61,7 @@ AskUserQuestionツールでスキルの起動方法を確認:
 
 ---
 
-## [2/4] スキルの作成
+## [2/3] スキルの作成
 
 ### TaskCreateでタスク管理
 
@@ -109,7 +110,7 @@ Skill({
 
 ---
 
-## [3/4] レビューと自動修正
+## [3/3] レビューと自動修正
 
 ### TaskUpdate更新
 
@@ -147,16 +148,6 @@ review-skillから指摘された問題を自動修正する際:
 4. **ベストプラクティス違反**: 推奨されるパターンに修正
 
 **修正後は必ず再レビュー**を実行して、問題が解決されたことを確認してください。
-
----
-
-## [4/4] README更新
-
-レビュー・自動修正が完了したら、`/update-skill-readme` を実行してREADMEを更新する:
-
-```
-/update-skill-readme skills
-```
 
 ---
 

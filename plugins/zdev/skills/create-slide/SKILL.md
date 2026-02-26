@@ -96,23 +96,32 @@ npm install --save-dev @marp-team/marp-cli
 }
 ```
 
+> プロジェクトでスライドのlintやMermaid図の自動生成が必要な場合は、`marp:lint` / `marp:diagrams` スクリプトを別途追加する。
+
 **2. テーマの導入**（`slides/themes/tech-scrapbook.css` がない場合）
 
-1. テーマ CSS をプロジェクトにコピーする
-   ```bash
-   mkdir -p slides/themes
-   cp <このスキルの references/tech-scrapbook.css> slides/themes/tech-scrapbook.css
-   ```
-2. `.marprc.yml`（なければ作成）にテーマパスを追加する
+1. このスキルの [references/tech-scrapbook.css](references/tech-scrapbook.css) を Read ツールで読み込む
+2. `slides/themes/tech-scrapbook.css` に Write ツールで書き出す（ディレクトリがなければ `mkdir -p slides/themes` で作成）
+3. `.marprc.yml`（なければ作成）に以下を設定する
    ```yaml
    theme: slides/themes/tech-scrapbook.css
+   themeSet: ./slides/themes/
+   html: true
+   allowLocalFiles: true
    ```
-3. VS Code / Cursor を使う場合は `.vscode/settings.json` に追加する
+4. VS Code / Cursor を使う場合は `.vscode/settings.json` に追加する
    ```json
    { "markdown.marp.themes": ["./slides/themes/tech-scrapbook.css"] }
    ```
 
 テーマ CSS の原本: [references/tech-scrapbook.css](references/tech-scrapbook.css)
+
+**3. PNG エクスポートスクリプトの導入**（`scripts/marp-export-png.sh` がない場合）
+
+1. このスキルの [references/marp-export-png.sh](references/marp-export-png.sh) を Read ツールで読み込む
+2. `scripts/marp-export-png.sh` に Write ツールで書き出す
+
+スクリプト原本: [references/marp-export-png.sh](references/marp-export-png.sh)
 
 #### 必須フォーマット（tech-scrapbook テーマ）
 
@@ -205,7 +214,7 @@ header: "スライドタイトル"
 アスキーアートではなく、Mermaid で SVG 図を生成してスライドに埋め込む。
 詳細な手順は [references/mermaid-guide.md](references/mermaid-guide.md) を参照。
 
-- `npm run marp:diagrams` で `slides/images/<図名>.svg` と `slides/images/<図名>-midnight.svg` をセットで生成する
+- `package.json` の `scripts` に `marp:diagrams` が定義されている場合のみ、`npm run marp:diagrams` で `slides/images/<図名>.svg` と `slides/images/<図名>-midnight.svg` をセットで生成する。定義されていない場合はこのステップをスキップする
 - SVG は Markdown 記法 `![](...)` で直接貼らず、必ず以下のテーマ切替コンテナを使う
 
 ```html
@@ -284,7 +293,7 @@ header: "スライドタイトル"
 
 ### 8. 自動 lint で内容の崩れを検出する
 
-以下を実行し、警告を確認して修正する。
+`package.json` の `scripts` に `marp:lint` が定義されている場合のみ、以下を実行し、警告を確認して修正する。定義されていない場合はこのステップをスキップする。
 
 ```bash
 npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
@@ -318,12 +327,12 @@ npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
    ```bash
    bash scripts/marp-export-png.sh "/tmp/marp-review-<base>" "slides/<ファイル名>"
    ```
-2. lint を実行する
+2. `package.json` の `scripts` に `marp:lint` が定義されている場合のみ lint を実行する（未定義ならスキップ）
    ```bash
    npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
    ```
-3. Markdown ソースを Read で読み、[source-check-rules.md](../review-slide/references/source-check-rules.md) の全 6 ルールでチェックする
-4. 全ページの PNG を Read ツールで **8 枚ずつ並列** 読み取りし、[review-checklist.md](../review-slide/references/review-checklist.md) の 17 観点で判定する
+3. Markdown ソースを Read で読み、[source-check-rules.md](references/source-check-rules.md) の全 6 ルールでチェックする
+4. 全ページの PNG を Read ツールで **8 枚ずつ並列** 読み取りし、[review-checklist.md](references/review-checklist.md) の 17 観点で判定する
 5. 問題を報告する。問題があれば修正方針に従って修正し、次の繰り返しへ進む
 
 #### 修正の方針
@@ -349,7 +358,7 @@ npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
 
 ### 10. 最終チェックを実行する
 
-完了報告の前に、最低限以下を実行する。
+完了報告の前に、`package.json` の `scripts` に各スクリプトが定義されている場合のみ以下を実行する（未定義のものはスキップ）。
 
 ```bash
 npm run marp:diagrams
@@ -391,6 +400,7 @@ npm run marp:lint -- --warn-only "slides/<ファイル名>.md"
 
 ## 注意事項
 
+- macOS/Linux 環境を前提とする。Windows 環境では WSL 上での使用を推奨する
 - `--no-config-file` は `.marprc.yml` との競合回避のため**必須**
 - stdin 待ちでハングするのを防ぐため、Marp CLI 実行時は `< /dev/null` を使う（`--no-stdin` は v4.x では使えない）
 - `--allow-local-files` は SVG 画像をスライドに埋め込む場合に**必須**

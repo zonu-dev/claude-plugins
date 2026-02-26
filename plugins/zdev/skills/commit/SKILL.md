@@ -1,4 +1,5 @@
 ---
+name: commit
 description: セマンティックコミットメッセージ形式（Type: Emoji #Issue Title）でコミットを作成する
 allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git log:*), Bash(git add:*), Bash(git commit:*), Bash(git branch:*), AskUserQuestion
 disable-model-invocation: true

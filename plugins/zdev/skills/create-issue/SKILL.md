@@ -1,4 +1,5 @@
 ---
+name: create-issue
 description: 対話的に新しいGitHub Issueを作成する
 allowed-tools: Bash(gh issue create:*), Bash(gh label list:*), Bash(ls:*), AskUserQuestion
 disable-model-invocation: true
@@ -15,6 +16,20 @@ disable-model-invocation: true
 - `--label <name>`: 付与するラベル（複数可）
 
 ## 処理手順
+
+### 0. 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### 1. テンプレートの確認
 

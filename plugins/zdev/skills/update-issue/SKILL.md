@@ -1,4 +1,5 @@
 ---
+name: update-issue
 description: GitHub Issueのステータス、ラベル、アサインなどを更新する
 allowed-tools: Bash(gh issue edit:*), Bash(gh issue close:*), Bash(gh issue reopen:*), Bash(gh issue comment:*), Bash(gh issue view:*), AskUserQuestion
 disable-model-invocation: true
@@ -21,6 +22,20 @@ Issueのステータス、ラベル、アサインなどを更新します。
 - `--milestone <name>`: マイルストーン設定
 
 ## 処理手順
+
+### 0. 前提条件の確認
+
+`gh` CLI がインストール・認証済みか確認する:
+
+```bash
+gh auth status
+```
+
+失敗した場合は以下を案内して終了:
+
+> `gh` CLI のインストールと認証が必要です。
+> - インストール: https://cli.github.com/
+> - 認証: `gh auth login`
 
 ### 1. 現在のIssue状態を取得
 
