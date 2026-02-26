@@ -9,7 +9,7 @@ Personal dev toolkit for Claude Code。
 | `list-issues` | Issue一覧・検索 |
 | `create-issue` | 新規Issue作成 |
 | `plan-issue` | Issue計画・深掘り（曖昧さ解消→計画→Issue反映） |
-| `start-issue` | Issueからブランチ作成・開発開始 |
+| `implement-issue` | 計画済みIssueのブランチ作成・実装・検証・コミット |
 | `update-issue` | Issueステータス・ラベル更新 |
 | `create-pr` | Issue連携PR作成 |
 | `review-pr` | PRコードレビュー（差分分析・指摘・アクション実行） |
@@ -36,7 +36,7 @@ Personal dev toolkit for Claude Code。
 ```bash
 /list-issues
 /plan-issue 123
-/start-issue 123
+/implement-issue 123
 /commit
 /create-pr
 ```
@@ -50,21 +50,16 @@ Personal dev toolkit for Claude Code。
 # 2. Issueの計画を立てる（曖昧さを深掘り）
 /plan-issue 123
 
-# 3. 開発開始（worktree + ブランチ作成）
-/start-issue 123
+# 3. 実装（ブランチ作成・実装・検証・コミット）
+/implement-issue 123
 
-# 4. 実装作業...
-
-# 5. コミット作成
-/commit
-
-# 6. PRを作成
+# 4. PRを作成
 /create-pr
 
-# 7. PRレビュー
+# 5. PRレビュー
 /review-pr 123
 
-# 8. 作業終了（worktree削除）
+# 6. 作業終了（worktree削除）
 /end-issue
 ```
 
@@ -86,14 +81,15 @@ Personal dev toolkit for Claude Code。
 - 決定事項を含む実装計画を作成
 - 計画をIssue本文またはコメントに反映
 
-### `start-issue <number>`
+### `implement-issue <number>`
 ```bash
-/start-issue 123         # Issue #123の開発を開始
+/implement-issue 123     # Issue #123を実装
 ```
-- ブランチタイプ（feature/bugfix/hotfix/release）を選択
-- Git-flow準拠のブランチ名を自動生成
-- git worktreeを使用して親ディレクトリにworktreeを作成
-- 作成したworktreeディレクトリに自動でcd
+- plan-issue で作成済みの実装計画を読み取り
+- feature ブランチを自動生成・チェックアウト
+- 実装計画に基づいてタスクリストを作成し順次実装
+- プロジェクトの品質チェック（lint, typecheck, test, build）を実行
+- セマンティックコミットを作成
 
 ### `create-pr`
 ```bash

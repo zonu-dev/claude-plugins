@@ -38,7 +38,7 @@
 - ...
 
 ### 次のステップ
-1. `/zdev:start-issue <number>` で開発を開始
+1. `/zdev:implement-issue <number>` で開発を開始
 ```
 
 ## 出力例
@@ -98,7 +98,7 @@
 - HTTPS必須（本番環境）
 
 ### 次のステップ
-1. `/zdev:start-issue 42` で開発を開始
+1. `/zdev:implement-issue 42` で開発を開始
 2. JWTユーティリティから実装
 
 ---

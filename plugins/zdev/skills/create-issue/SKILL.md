@@ -71,7 +71,7 @@ gh issue create \
 以下を出力：
 - 作成されたIssue URL
 - Issue番号
-- `/zdev:start-issue` で開発開始を促すメッセージ
+- `/zdev:implement-issue` で開発開始を促すメッセージ
 
 ## Issue本文テンプレート
 
@@ -135,6 +135,6 @@ gh issue create \
 **ラベル:** enhancement, auth
 
 **次のステップ:**
-- 開発を開始: `/zdev:start-issue 43`
+- 開発を開始: `/zdev:implement-issue 43`
 - Issueを分析: `/zdev:plan-issue 43`
 ```

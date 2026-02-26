@@ -37,7 +37,7 @@ GitHub Issueの一覧を表示し、フィルタリングや検索を行いま�
 4. **次のアクション提案**
    一覧表示後、以下を案内：
    - 特定のIssueの詳細を見る: `gh issue view <number>`
-   - Issueの開発を開始する: `/zdev:start-issue <number>`
+   - Issueの開発を開始する: `/zdev:implement-issue <number>`
    - Issueを分析する: `/zdev:plan-issue <number>`
 
 ## 出力例
@@ -52,6 +52,6 @@ GitHub Issueの一覧を表示し、フィルタリングや検索を行いま�
 
 **次のステップ:**
 - Issue詳細を確認: `gh issue view <number>`
-- 開発を開始: `/zdev:start-issue <number>`
+- 開発を開始: `/zdev:implement-issue <number>`
 - Issueを分析: `/zdev:plan-issue <number>`
 ```
