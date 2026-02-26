@@ -191,15 +191,8 @@ gh pr comment <number> --body "<コメント本文>"
 
 以下を出力する:
 
-```markdown
-## PR #<number> 解説スライド生成完了
-
-- スライド: slides/<ファイル名>.md (<ページ数> ページ)
-- PDF: slides/dist/<ファイル名>.pdf
-- コミット: <hash> docs: 📝 PR #<number> 解説スライドを追加
-- PR コメント: 投稿済み
-
-PDF リンク: <GitHub PDF URL>
+```
+PR #<number> 解説スライド — <GitHub PDF URL>
 ```
 
 ## エラーハンドリング
