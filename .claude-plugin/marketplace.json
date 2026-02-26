@@ -12,7 +12,7 @@
     {
       "name": "zdev",
       "description": "Personal dev toolkit for Claude Code",
-      "version": "1.8.0",
+      "version": "1.9.0",
       "source": "./plugins/zdev",
       "category": "productivity"
     }
